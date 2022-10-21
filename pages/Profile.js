@@ -12,7 +12,7 @@ import ProjectCard from "../components/ProjectCard";
 const Profile = () => {
   return (
     <>
-      <h1 className="text-center">Cole Westbrook</h1>
+      <h1 className="text-center">ColeWestbrook</h1>
       <div className="flex justify-center items-center">
         <div className="w-60 h-48 bg-gray-100 flex flex-col justify-center items-end">
           <IconText icon={<FaMapPin />} text={"Charleston, SC"} />
