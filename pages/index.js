@@ -1,7 +1,25 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 
 const Home = () => {
+  const router = useRouter()
+  const flipIsLoggedIn = () => {
+    if (localStorage.getItem("loggedIn") == undefined) {
+      localStorage.setItem("loggedIn","false");
+    } else {
+      const currState = localStorage.getItem("loggedIn") == "true"
+      localStorage.setItem("loggedIn", !currState)
+    }
+  };
+  useEffect(() => {
+    if (localStorage.getItem("loggedIn") != "true") {
+      router.push('/auth')
+    }
+  }, [])
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -16,7 +34,7 @@ const Home = () => {
             Next.js!
           </a>
         </h1>
-
+        <button onClick={flipIsLoggedIn}>Flipper</button>
         <p className="mt-3 text-2xl">
           Get started by editing{' '}
           <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">

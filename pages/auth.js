@@ -4,6 +4,9 @@ import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/Input";
 
 const Auth = () => {
+  const login = () => {
+    localStorage.setItem("loggedIn", "true")
+  };
   return (
     <>
       <div className="flex justify-center items-center h-screen">
@@ -16,7 +19,7 @@ const Auth = () => {
             <Input type="password" placeHolder="password" />
             <div className="flex justify-between items-center w-full mt-5">
               <Checkbox label="Remember me"/>
-              <ButtonSmall text="Login"/>
+              <ButtonSmall onClick={login} text="Login"/>
             </div>
             <a href="/register" className="mt-4 text-indigo-500 hover:text-indigo-400 hover:underline cursor-pointer">No account? Register</a>
           </div>

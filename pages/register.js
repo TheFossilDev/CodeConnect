@@ -15,6 +15,7 @@ const Register = () => {
             <Input type="text" placeHolder="username" />
             <Input type="text" placeHolder="ataylorjoy@gmail.com" />
             <Input type="password" placeHolder="password" />
+            <Input type="password" placeHolder="confirm password" />
             <div className="flex justify-between items-center w-full mt-5">
               <Checkbox label="Stay logged in"/>
               <ButtonSmall text="Login"/>
