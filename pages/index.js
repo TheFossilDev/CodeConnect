@@ -1,25 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 
 const Home = () => {
-  const router = useRouter()
-  const flipIsLoggedIn = () => {
-    if (localStorage.getItem("loggedIn") == undefined) {
-      localStorage.setItem("loggedIn","false");
-    } else {
-      const currState = localStorage.getItem("loggedIn") == "true"
-      localStorage.setItem("loggedIn", !currState)
-    }
-  };
-  useEffect(() => {
-    if (localStorage.getItem("loggedIn") != "true") {
-      router.push('/auth')
-    }
-  }, [])
-
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
