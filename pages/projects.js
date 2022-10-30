@@ -6,8 +6,13 @@ import {
   FaRegPlusSquare,
 } from "react-icons/fa";
 import TextLink from "../components/UI/TextLink";
-import Modal from "../components/UI/Modal/Modal";
 import { useState } from "react";
+import ConfirmableModal from "../components/UI/Modal/ConfirmableModal";
+import Input from "../components/UI/Input";
+import TextArea from "../components/UI/TextArea";
+
+// TODO: Finish modal
+// TODO: Create alt dummy page
 
 const dummyProjects = [
   {
@@ -43,11 +48,14 @@ const projects = () => {
 
   return (
     <div className="bg-slate-50 h-screen">
-      {addingProject ? <Modal onBackgroundClick={onCloseModal}>
-        <div>
-          <h2>Create project</h2>
-        </div>
-      </Modal> : null}
+      {addingProject ? <ConfirmableModal onClose={onCloseModal} header="Create project">
+        <form>
+          <Input type="text" label="Project Title"/>
+          <TextArea rows="4" cols="30" label="Project Description"></TextArea>
+          <Input type="text" label="Languages used"/>
+          <Input type="text" label="Project tags"/>
+        </form>
+      </ConfirmableModal> : null}
       <NavBar />
       <div className="m-auto w-2/3 flex flex-col justify-start items-center">
         <div className="w-full my-10 flex justify-between items-center">

@@ -4,7 +4,7 @@ const Modal = props => {
   return (
     <>
       <ModalBackground onClick={props.onBackgroundClick}/>
-      <div className="absolute w-fit h-fit min-h-20 min-w-20 bg-white">{props.children}</div>
+      <div className="absolute left-0 right-0 top-1/3 m-auto w-fit h-fit min-h-20 min-w-20 p-10 rounded-md bg-white">{props.children}</div>
     </>
   );
 };

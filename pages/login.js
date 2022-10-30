@@ -3,6 +3,8 @@ import ButtonSmall from "../components/ButtonSmall";
 import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/Input";
 
+// TODO: Connect to context
+
 const Login = () => {
   return (
     <>

@@ -8,10 +8,14 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import ProjectCard from "../components/ProjectCard";
+import NavBar from "../components/UI/NavBar";
+
+// TODO: Everything
 
 const Profile = () => {
   return (
     <>
+      <NavBar />
       <h1 className="text-center">ColeWestbrook</h1>
       <div className="flex justify-center items-center">
         <div className="w-60 h-48 bg-gray-100 flex flex-col justify-center items-end">

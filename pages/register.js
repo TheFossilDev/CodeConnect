@@ -3,6 +3,9 @@ import ButtonSmall from "../components/ButtonSmall";
 import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/Input";
 
+// TODO: Connect to context
+// TODO: Finalize sizing
+
 const Login = () => {
   return (
     <>
@@ -23,8 +26,10 @@ const Login = () => {
               </div>
               <Input type="text" placeHolder="AnyaTaylor" label="Username (Public)"/>
               <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email"/>
-              <Input type="password" placeHolder="password" label="Password"/>
-              <Input type="password" placeHolder="passwords must match" label="Confirm password"/>
+              <div className="flex items-center justify-evenly">
+                <Input type="password" placeHolder="password" label="Password"/>
+                <Input type="password" placeHolder="passwords must match" label="Confirm password"/>
+              </div>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Keep me logged in" />
                 <ButtonSmall text="Login" />

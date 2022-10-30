@@ -8,7 +8,7 @@ const Input = (props) => {
         value={props.value}
         onChange={props.onChange}
         placeholder={props.placeHolder}
-        className="h-10 w-full p-1 my-1 border-2 border-solid rounded-md"
+        className={"h-10 w-full p-1 my-1 border-2 border-solid rounded-md"}
       />
     </>
   );
