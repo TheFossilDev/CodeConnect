@@ -28,7 +28,7 @@ const Login = () => {
               <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email"/>
               <div className="flex items-center justify-evenly">
                 <Input type="password" placeHolder="password" label="Password"/>
-                <Input type="password" placeHolder="passwords must match" label="Confirm password"/>
+                <Input type="password" placeHolder="passwords must match" label="Retype"/>
               </div>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Keep me logged in" />
@@ -46,8 +46,8 @@ const Login = () => {
             <Image
               src="/LogoMark.png"
               alt="CodeConnect Logo"
-              width="256px"
-              height="256px"
+              width="256"
+              height="256"
             />
           </div>
         </div>

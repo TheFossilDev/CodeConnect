@@ -51,7 +51,7 @@ const projects = () => {
       {addingProject ? <ConfirmableModal onClose={onCloseModal} header="Create project">
         <form>
           <Input type="text" label="Project Title"/>
-          <TextArea rows="4" cols="30" label="Project Description"></TextArea>
+          <Input label="Project Description"></Input>
           <Input type="text" label="Languages used"/>
           <Input type="text" label="Project tags"/>
         </form>

@@ -33,8 +33,8 @@ const Login = () => {
             <Image
               src="/LogoMark.png"
               alt="CodeConnect Logo"
-              width="256px"
-              height="256px"
+              width="256"
+              height="256"
             />
           </div>
         </div>
