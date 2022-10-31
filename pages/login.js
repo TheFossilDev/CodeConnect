@@ -2,10 +2,36 @@ import Image from "next/image";
 import ButtonSmall from "../components/ButtonSmall";
 import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/Input";
+import { firebaseAuth } from "../firebase/clientApp";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 // TODO: Connect to context
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const router = useRouter();
+
+
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(firebaseAuth);
+
+  useEffect(() => {
+    if (!loading && error != null) {
+      console.error(error);
+    }
+    else if (!loading && user != null) {
+      console.log(user)
+      router.push("/projects");
+    }
+  }, [user, loading, error])
+  
   return (
     <>
       <div className="flex justify-center items-center h-screen">
@@ -15,11 +41,11 @@ const Login = () => {
             <div className="w-2/3">
               <h1 className="text-4xl mb-2">Welcome back</h1>
               <h3 className="text-l mb-4 text-gray-500">Sign in with email</h3>
-              <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email"/>
-              <Input type="password" placeHolder="password" label="Password"/>
+              <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+              <Input type="password" placeHolder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Remember me" />
-                <ButtonSmall text="Login" />
+                <ButtonSmall text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/>
               </div>
               <a
                 href="/register"

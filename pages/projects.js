@@ -6,10 +6,12 @@ import {
   FaRegPlusSquare,
 } from "react-icons/fa";
 import TextLink from "../components/UI/TextLink";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConfirmableModal from "../components/UI/Modal/ConfirmableModal";
 import Input from "../components/UI/Input";
 import TextArea from "../components/UI/TextArea";
+import { firebaseAuth } from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // TODO: Finish modal
 // TODO: Create alt dummy page
@@ -37,6 +39,17 @@ const dummyProjects = [
 ];
 
 const projects = () => {
+  const [user, loading, error] = useAuthState(firebaseAuth);
+  useEffect(() => {
+    if (!loading && error != null) {
+      console.error(error);
+    }
+    else if (!loading && user != null) {
+      console.log(user)
+    }
+  }, [user, loading, error])
+
+
   const onCloseModal = () => {
     setAddingProject(false);
   };

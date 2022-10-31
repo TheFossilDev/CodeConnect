@@ -3,10 +3,35 @@ import ButtonSmall from "../components/ButtonSmall";
 import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/Input";
 
+import { firebaseAuth } from "../firebase/clientApp";
+import { useEffect, useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
+
 // TODO: Connect to context
 // TODO: Finalize sizing
 
-const Login = () => {
+const Register = () => {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(firebaseAuth);
+
+  useEffect(() => {
+    if (!loading && error != null) {
+      console.error(error);
+    }
+    else if (!loading && user != null) {
+      router.push("/projects");
+    }
+  }, [user, loading, error])
+
   return (
     <>
       <div className="flex justify-center items-center h-screen">
@@ -25,14 +50,14 @@ const Login = () => {
                 </a>
               </div>
               <Input type="text" placeHolder="AnyaTaylor" label="Username (Public)"/>
-              <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email"/>
+              <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
               <div className="flex items-center justify-evenly">
-                <Input type="password" placeHolder="password" label="Password"/>
+                <Input type="password" placeHolder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
                 <Input type="password" placeHolder="passwords must match" label="Retype"/>
               </div>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Keep me logged in" />
-                <ButtonSmall text="Login" />
+                <ButtonSmall text="Register" onClick={() => createUserWithEmailAndPassword(email, pass)} />
               </div>
             </div>
           </div>
@@ -56,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
