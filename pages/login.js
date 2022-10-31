@@ -7,7 +7,6 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-// TODO: Connect to context
 
 const Login = () => {
   const [email, setEmail] = useState("");

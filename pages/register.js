@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
-// TODO: Connect to context
 // TODO: Finalize sizing
 
 const Register = () => {
@@ -43,7 +42,7 @@ const Register = () => {
               <div className="flex justify-start items-center mb-4">
                 <h3 className="text-l text-gray-500 mr-2">Already have an account?</h3>
                 <a
-                  href="/register"
+                  onClick={() => router.push("/register")}
                   className="text-sky-500 hover:text-sky-400 hover:underline cursor-pointer"
                   >
                   Log In
