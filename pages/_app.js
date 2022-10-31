@@ -1,8 +1,7 @@
-import { AuthProvider } from '../context/FirebaseAuthContext'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  return <AuthProvider><Component {...pageProps} /></AuthProvider>
+  return <Component {...pageProps} />
 }
 
 export default MyApp

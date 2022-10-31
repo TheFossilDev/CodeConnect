@@ -14,9 +14,22 @@ import ProjectCard from "../components/ProjectCard";
 import NavBar from "../components/UI/NavBar";
 import ButtonSmall from "../components/ButtonSmall";
 
+import { firebaseAuth } from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useEffect } from "react";
 // TODO: Everything
 
 const Profile = () => {
+  const [user, loading, error] = useAuthState(firebaseAuth);
+  useEffect(() => {
+    if (!loading && error != null) {
+      console.error(error);
+    }
+    else if (!loading && user != null) {
+      console.log(user)
+    }
+  }, [user, loading, error])
+
   return (
     <div className="bg-slate-50 h-screen">
       <NavBar />
