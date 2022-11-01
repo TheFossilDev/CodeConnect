@@ -5,7 +5,9 @@ const TextArea = (props) => {
       <textarea
         rows={props.rows}
         cols={props.cols}
-        className="border-2 rounded-md"
+        onChange={props.onChange}
+        value={props.value}
+        className="h-10 w-full p-1 my-1 border-2 border-solid rounded-md"
       ></textarea>
     </>
   );
