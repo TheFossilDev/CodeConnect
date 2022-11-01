@@ -19,9 +19,7 @@ import TextArea from "../components/UI/TextArea";
 import Checkbox from "../components/UI/Checkbox";
 import { firebaseAuth } from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
-
-// TODO: Finish modal
-// TODO: Create alt dummy page
+import { useRouter } from "next/router";
 
 const projects = [
   {
@@ -49,11 +47,14 @@ const projects = [
 
 const Projects = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
+  const router = useRouter();
   useEffect(() => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
       console.log(user);
+    } else if (!loading) {
+      router.push("/login")
     }
   }, [user, loading, error]);
 
@@ -101,7 +102,7 @@ const Projects = () => {
     addProject(properties)
   };
 
-  return (
+  if (!loading && user != null) return (
     <div className="bg-slate-50 h-screen">
       {addingProject ? (
         <ConfirmableModal

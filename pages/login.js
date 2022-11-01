@@ -27,7 +27,7 @@ const Login = () => {
     }
     else if (!loading && user != null) {
       console.log(user)
-      router.push("/projects");
+      router.push("/profile");
     }
   }, [user, loading, error])
   

@@ -9,8 +9,6 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import TextLink from "../components/UI/TextLink";
 
-// TODO: Finalize sizing
-
 const Register = () => {
   const router = useRouter();
 
@@ -23,7 +21,7 @@ const Register = () => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
-      router.push("/projects");
+      router.push("/profile");
     }
   }, [user, loading, error]);
 
@@ -85,12 +83,6 @@ const Register = () => {
             </div>
           </div>
           <div className="w-1/2 h-full bg-slate-50 flex justify-center items-center">
-            {/* <Image
-              src="/Developers.jpg"
-              width="1920"
-              height="1152"
-              alt="Developers working on software"
-            /> */}
             <Image
               src="/LogoMark.png"
               alt="CodeConnect Logo"

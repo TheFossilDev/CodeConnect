@@ -16,16 +16,18 @@ const Profile = () => {
       console.error(error);
     } else if (!loading && user != null) {
       console.log(user);
+    } else if (!loading) {
+      router.push("/login")
     }
   }, [user, loading, error]);
 
-  return (
+  if (!loading && user != null) return (
     <>
       <div className="bg-slate-50 h-screen">
         <NavBar />
         <div className="h-full flex flex-col justify-start items-center">
           {/* Profile Card */}
-          <FlatOutlineCard className="w-4/5 h-2/5 my-5 flex justify-evenly items-center">
+          <FlatOutlineCard className="w-4/5 h-2/5 my-5 flex justify-between items-center">
             <div className="flex flex-col justify-center items-center">
               <h2 className="font-semibold text-2xl">@ColeWestbrook</h2>
               <FaUserCircle size="175" />
