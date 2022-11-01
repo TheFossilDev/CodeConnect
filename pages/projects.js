@@ -85,6 +85,8 @@ const Projects = () => {
         <GrMysql size="25" />
       ) : language === "Swift" ? (
         <FaSwift size="25" />
+      ) : language === "R" ? (
+        <FaRProject size="25" />
       ) : language
     )});
     properties.languages = iconLanguages;
