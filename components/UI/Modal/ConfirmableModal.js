@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import { RiCloseFill } from "react-icons/ri"
-import ButtonSecondary from "../../ButtonSecondary";
-import ButtonSmall from "../../ButtonSmall";
+import ButtonSecondary from "../Buttons/ButtonSecondary";
+import ButtonPrimary from "../Buttons/ButtonPrimary";
 
 const ConfirmableModal = props => {
   const handleConfirm = () => {
@@ -17,7 +17,7 @@ const ConfirmableModal = props => {
       {props.children}
       <div className="w-full flex justify-end">
         <ButtonSecondary onClick={props.onClose} text="Cancel"/>
-        <ButtonSmall onClick={handleConfirm} text="Create Project"/>
+        <ButtonPrimary onClick={handleConfirm} text="Create Project"/>
       </div>
     </Modal>
   );

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import ButtonSmall from "../components/ButtonSmall";
+import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
 import Checkbox from "../components/UI/Checkbox";
-import Input from "../components/UI/Input";
+import Input from "../components/UI/FormElements/Input";
 import { firebaseAuth } from "../firebase/clientApp";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useState, useEffect } from "react";
@@ -44,7 +44,7 @@ const Login = () => {
               <Input type="password" placeHolder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Remember me" />
-                <ButtonSmall text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/>
+                <ButtonPrimary text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/>
               </div>
               <a
                 href="/register"

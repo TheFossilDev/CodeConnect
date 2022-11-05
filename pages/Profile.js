@@ -8,7 +8,7 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import NavBar from "../components/UI/NavBar";
-import ButtonSmall from "../components/ButtonSmall";
+import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
 
 import { firebaseAuth } from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import FlatOutlineCard from "../components/UI/FlatOutlineCard";
 import { useRouter } from "next/router";
 
-const Profile = () => {
+const profile = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
   const router = useRouter();
   useEffect(() => {
@@ -61,7 +61,7 @@ const Profile = () => {
                         <h3 className="text-lg text-gray-500">Contributor</h3>
                       </div>
                     </div>
-                    <ButtonSmall text="See more" />
+                    <ButtonPrimary text="See more" />
                   </div>
                   <p className="m-1 text-gray-500">
                     Very popular media player compatible with every system. Open
@@ -115,4 +115,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default profile;

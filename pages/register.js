@@ -1,13 +1,13 @@
 import Image from "next/image";
-import ButtonSmall from "../components/ButtonSmall";
+import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
 import Checkbox from "../components/UI/Checkbox";
-import Input from "../components/UI/Input";
+import Input from "../components/UI/FormElements/Input";
 
 import { firebaseAuth } from "../firebase/clientApp";
 import { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
-import TextLink from "../components/UI/TextLink";
+import ClickableText from "../components/UI/Buttons/ClickableText";
 
 const Register = () => {
   const router = useRouter();
@@ -37,11 +37,11 @@ const Register = () => {
                 <h3 className="text-l text-gray-500 mr-2">
                   Already have an account?
                 </h3>
-                <TextLink
+                <ClickableText
                   onClick={() => router.push("/login")}
                   text="Log in"
                   colorDefault
-                ></TextLink>
+                ></ClickableText>
               </div>
               <Input
                 type="text"
@@ -75,7 +75,7 @@ const Register = () => {
               </div>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Keep me logged in" />
-                <ButtonSmall
+                <ButtonPrimary
                   text="Register"
                   onClick={() => createUserWithEmailAndPassword(email, pass)}
                 />

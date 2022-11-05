@@ -1,5 +1,5 @@
 import Image from "next/image";
-import TextLink from "./TextLink";
+import ClickableText from "../UI/Buttons/ClickableText";
 import { signOut } from "firebase/auth";
 
 import { firebaseAuth } from "../../firebase/clientApp";
@@ -22,12 +22,12 @@ const NavBar = props => {
       <div className="flex justify-between w-2/3">
         <div className="flex justify-start items-center">
           <Image src="/Logo.png" width="64" height="64" alt="CodeConnect logo of blue atom"/>
-          <TextLink text="Profile" onClick={() => router.push("/profile")} />
-          <TextLink text="My Projects" onClick={() => router.push("/projects")} />
+          <ClickableText text="Profile" onClick={() => router.push("/profile")} />
+          <ClickableText text="My Projects" onClick={() => router.push("/projects")} />
           <p className="m-2 font-semibold text-gray-400 cursor-default">Find project (Coming soon!)</p>
         </div>
         <div className="flex justify-start items-center">
-          <TextLink text="Logout" onClick={handleSignOut}/>
+          <ClickableText text="Logout" onClick={handleSignOut}/>
         </div>
       </div>
     </div>

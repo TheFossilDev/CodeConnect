@@ -11,11 +11,11 @@ import {
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io"
 import { GrMysql } from "react-icons/gr"
-import TextLink from "../components/UI/TextLink";
+import ClickableText from "../components/UI/Buttons/ClickableText";
 import { useEffect, useState } from "react";
 import ConfirmableModal from "../components/UI/Modal/ConfirmableModal";
-import Input from "../components/UI/Input";
-import TextArea from "../components/UI/TextArea";
+import Input from "../components/UI/FormElements/Input";
+import TextArea from "../components/UI/FormElements/TextArea";
 import Checkbox from "../components/UI/Checkbox";
 import { firebaseAuth } from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -67,7 +67,6 @@ const Projects = () => {
 
   const [addingProject, setAddingProject] = useState(false);
 
-  // ADD PROJECT DETAILS
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [languages, setLanguages] = useState("");
@@ -173,7 +172,7 @@ const Projects = () => {
                     }
                   </td>
                   <td>
-                    <TextLink
+                    <ClickableText
                       colorDefault
                       text={project.title}
                       href="https://google.com"
