@@ -11,9 +11,6 @@ import ClickableText from "../UI/Buttons/ClickableText";
 const ProjTableElement = (props) => {
   return (
       <tr key={props.id} className="bg-white border-gray-200 border-y-2 hover:bg-gray-100">
-        <td>
-          <FaQuestionCircle />
-        </td>
         <td className="flex justify-center py-6">
           {
             props.project.status === "done" ? (

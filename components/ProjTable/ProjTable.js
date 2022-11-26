@@ -8,7 +8,6 @@ import {
 import { v4 } from "uuid";
 import { IoLogoJavascript } from "react-icons/io"
 import { GrMysql } from "react-icons/gr"
-import { Fragment } from "react";
 
 const projects = [
   {
@@ -40,7 +39,6 @@ const ProjTable = (props) => {
       <table className="mt-5 table-auto w-full">
         <thead>
           <tr>
-            <th className="text-base text-gray-700 text-left">Info</th>
             <th className="text-base text-gray-700 text-left">Status</th>
             <th className="text-base text-gray-700 text-left">Title</th>
             <th className="text-base text-gray-700 text-left">Description</th>
