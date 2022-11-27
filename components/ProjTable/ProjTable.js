@@ -35,7 +35,7 @@ const projects = [
 ];
 const ProjTable = (props) => {
   return (
-    <div>
+    <div className="mb-60">
       <table className="mt-5 table-auto w-full">
         <thead>
           <tr>

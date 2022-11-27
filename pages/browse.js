@@ -19,6 +19,7 @@ const browse = (props) => {
       <div className="flex flex-col justify-start items-center">
         <div className="w-2/3">
           <ProjCarousel />
+          <h1 className="text-3xl my-8">Popular project categories</h1>
           <div className="flex justify-evenly items-center my-4">
             <LargeTileButton
               from="from-red-400"

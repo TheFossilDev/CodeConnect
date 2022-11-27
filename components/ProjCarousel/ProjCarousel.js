@@ -10,12 +10,12 @@ const DUMMY_REC_PROJECTS = [
 const ProjCarousel = props => {
   return (
     <div>
-      <h1>Recommended projects based on your skills</h1>
-      <div>
+      <h1 className="text-3xl my-8">Recommended projects based on your skills</h1>
+      <div className="flex justify-center items-center">
         {/* Individual panes, left and right are hidden */}
         <ProjDetailPane />
       </div>
-      <ProjCarouselNav />
+      <ProjCarouselNav count={5}/>
     </div>
   );
 };
