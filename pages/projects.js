@@ -20,6 +20,7 @@ import Checkbox from "../components/UI/Checkbox";
 import { firebaseAuth } from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const projects = [
   {
@@ -100,6 +101,17 @@ const Projects = () => {
       description: description,
       languages: languages.split(" ")
     }
+    axios.post("http://10.5.204.197:8000/project/create/", {
+      title: title,
+      description: description,
+      languages: languages.split(" "),
+      users: user.uid
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });  
+
     addProject(properties)
   };
 

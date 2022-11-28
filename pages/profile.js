@@ -12,22 +12,46 @@ import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
 
 import { firebaseAuth } from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FlatOutlineCard from "../components/UI/FlatOutlineCard";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const profile = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
   const router = useRouter();
+  const initialFormData = Object.freeze({
+    uid: "",
+    username: "",
+    email: "",
+    bio: "",
+    skills: "",
+    displayName: "",
+  });
+  const [formData, updateFormData] = useState({ initialFormData });
+
+
+
   useEffect(() => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
+      axios.get("http://10.5.204.197:8000/user/profile/" + user.uid).then((res) => {
+      updateFormData({
+        ...formData,
+        ["username"]: res.data.username,
+        ["bio"]: res.data.bio,
+        ["email"]: res.data.email,
+        ["skills"]: res.data.skills,
+        ["displayName"]: res.data.displayName,
+      });
+      console.log(res.data);
+    });
       console.log(user);
     } else if (!loading) {
       router.push("/login");
     }
-  }, [user, loading, error]);
+  }, [updateFormData, user, loading, error]);
 
   if (!loading && user != null)
     return (
@@ -38,7 +62,7 @@ const profile = () => {
             {/* Profile Card */}
             <FlatOutlineCard className="w-4/5 h-2/5 my-5 flex justify-around items-center">
               <div className="flex flex-col justify-center items-center">
-                <h2 className="font-semibold text-2xl">@ColeWestbrook</h2>
+                <h2 className="font-semibold text-2xl" >@{formData.displayName}</h2>
                 <FaUserCircle size="175" />
                 {/* Socials */}
                 <div className="w-full flex justify-evenly">

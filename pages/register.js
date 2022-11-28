@@ -3,27 +3,43 @@ import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
 import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/FormElements/Input";
 
-import { firebaseAuth } from "../firebase/clientApp";
+import  { firebaseAuth } from "../firebase/clientApp";
 import { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import ClickableText from "../components/UI/Buttons/ClickableText";
+import axios from "axios";
 
 const Register = () => {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [username, setUsername] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(firebaseAuth);
+
+    
+  
 
   useEffect(() => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
+      axios.post("http://10.5.204.197:8000/user/register/", {
+        username: username,
+        email: email,
+        localID: firebaseAuth.currentUser.uid
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });  
       router.push("/profile");
+      
     }
   }, [user, loading, error]);
+  
 
   return (
     <>
@@ -47,6 +63,8 @@ const Register = () => {
                 type="text"
                 placeHolder="AnyaTaylor"
                 label="Username (Public)"
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
               />
               <Input
                 type="text"
@@ -77,7 +95,7 @@ const Register = () => {
                 <Checkbox label="Keep me logged in" />
                 <ButtonPrimary
                   text="Register"
-                  onClick={() => createUserWithEmailAndPassword(email, pass)}
+                  onClick={() => {createUserWithEmailAndPassword(email, pass)}}
                 />
               </div>
             </div>
