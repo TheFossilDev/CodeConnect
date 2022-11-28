@@ -24,7 +24,7 @@ const NavBar = props => {
           <Image src="/Logo.png" width="64" height="64" alt="CodeConnect logo of blue atom"/>
           <ClickableText text="Profile" onClick={() => router.push("/profile")} />
           <ClickableText text="My Projects" onClick={() => router.push("/projects")} />
-          <p className="m-2 font-semibold text-gray-400 cursor-default">Find project (Coming soon!)</p>
+          <ClickableText text="Browse Projects" onClick={() => router.push("/browse")} />
         </div>
         <div className="flex justify-start items-center">
           <ClickableText text="Logout" onClick={handleSignOut}/>
