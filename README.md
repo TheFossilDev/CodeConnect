@@ -28,7 +28,7 @@
 
 ## Backend
 
-The backend for this project was built using Django and PostgreSQL. The link to the repository for the backend is here [Link](https://github.com/robinsonianr/CodeConnect/tree/main). 
+The backend for this project was built using Django and PostgreSQL. The link to the repository for the backend is [here](https://github.com/robinsonianr/CodeConnect/tree/main). 
 
 ## Getting started with our repo:
 
