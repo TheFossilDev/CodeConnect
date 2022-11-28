@@ -26,6 +26,10 @@
 4. Run `npm run dev` to start the development server and go to localhost:3000 to see the app
 5. Make changes to the code and save to see the changes in the browser
 
+## Backend
+
+The backend for this project was built using Django and PostgreSQL. The link to the repository for the backend is here [Link](https://github.com/robinsonianr/CodeConnect/tree/main). 
+
 ## Getting started with our repo:
 
 1. Take a look at the structure of each of the pages under `pages/` and the components under `components/` to get a feel for how the app is structured. We make generic components that we can reuse in other UI elements.
