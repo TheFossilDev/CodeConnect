@@ -101,7 +101,7 @@ const Projects = () => {
       description: description,
       languages: languages.split(" ")
     }
-    axios.post("https://10.5.204.197:8000/project/create/", {
+    axios.post("http://127.0.0.1:8000/project/create/", {
       title: title,
       description: description,
       languages: languages.split(" "),

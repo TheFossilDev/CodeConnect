@@ -36,7 +36,7 @@ const profile = () => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
-      axios.get("https://10.5.204.197:8000/user/profile/" + user.uid).then((res) => {
+      axios.get("http://127.0.0.1:8000/user/profile/" + user.uid).then((res) => {
       updateFormData({
         ...formData,
         ["username"]: res.data.username,

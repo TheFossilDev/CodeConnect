@@ -26,7 +26,7 @@ const Register = () => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
-      axios.post("https://10.5.204.197:8000/user/register/", {
+      axios.post("http://127.0.0.1:8000/user/register/", {
         username: username,
         email: email,
         localID: firebaseAuth.currentUser.uid
