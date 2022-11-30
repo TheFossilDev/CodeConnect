@@ -22,42 +22,54 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const projects = [
-  {
-    status: "done",
-    title: "GPT-4",
-    description:
-      "The successor to world class NLP engine GPT-3 created by OpenAI",
-    languages: [<FaPython size="25" />, <IoLogoJavascript size="25" />, <FaRProject size="25" />],
-  },
-  {
-    status: "inProgress",
-    title: "TikTok Downloader",
-    description: "Downloads tikTok videos automatically",
-    languages: [<FaSwift size="25" />, <FaJava size="25" />, <GrMysql size="25" />],
-  },
-  {
-    status: "seekingContributors",
-    title: "Youtube Downloader",
-    description: "Downloads youtube videos automatically",
-    languages: [<FaSwift size="25" />, <FaJava size="25" />, <GrMysql size="25" />],
-  },
-];
+
 
 
 
 const Projects = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
+  const [tableData, setTableData] = useState([]);
   const router = useRouter();
   useEffect(() => {
     if (!loading && error != null) {
       console.error(error);
     } else if (!loading && user != null) {
+      fetch("http://127.0.0.1:8000/project/view/")
+      .then((data) => data.json())
+      .then((data) => setTableData(data))
+
       console.log(user);
     } else if (!loading) {
       router.push("/login")
     }
   }, [user, loading, error]);
+  const projects = [];
+  tableData.forEach(element => {
+    let iconLanguages = []
+    if(element.users == user.uid){
+      element.languages.forEach(language => {
+        iconLanguages.push(language === "Python" ? (
+          <FaPython size="25" />
+        ) : language === "JavaScript" ? (
+          <IoLogoJavascript size="25" />
+        ) : language === "Java" ? (
+          <FaJava size="25" />
+        ) : language === "SQL" ? (
+          <GrMysql size="25" />
+        ) : language === "Swift" ? (
+          <FaSwift size="25" />
+        ) : language === "R" ? (
+          <FaRProject size="25" />
+        ) : language
+      )});
+     element.languages = iconLanguages;
+      projects.push({id:element.id, status:"inProgress", title:element.title, description:element.description, languages:element.languages})
+    }
+    
+    
+  });
+
+  
 
   const onCloseModal = () => {
     setAddingProject(false);
