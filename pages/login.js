@@ -42,10 +42,12 @@ const Login = () => {
               <h3 className="text-l mb-4 text-gray-500">Sign in with email</h3>
               <Input type="text" placeholder="ataylorjoy@gmail.com" label="Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
               <Input type="password" placeholder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
+              {error && <span className="text-l mb-4 text-red-500">Incorrect email or password</span>}
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Remember me" />
                 <ButtonPrimary text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/>
               </div>
+              
               <a
                 href="/register"
                 className="mt-4 text-sky-500 hover:text-sky-400 hover:underline cursor-pointer"
