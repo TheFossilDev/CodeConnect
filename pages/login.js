@@ -40,8 +40,8 @@ const Login = () => {
             <div className="w-2/3">
               <h1 className="text-4xl mb-2">Welcome back</h1>
               <h3 className="text-l mb-4 text-gray-500">Sign in with email</h3>
-              <Input type="text" placeHolder="ataylorjoy@gmail.com" label="Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
-              <Input type="password" placeHolder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
+              <Input type="text" placeholder="ataylorjoy@gmail.com" label="Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+              <Input type="password" placeholder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Remember me" />
                 <ButtonPrimary text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/>

@@ -6,10 +6,13 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaGithub,
+  FaPencilAlt
 } from "react-icons/fa";
 import NavBar from "../components/UI/NavBar";
 import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
-
+import ConfirmableModal from "../components/UI/Modal/ConfirmableModalEdit";
+import Input from "../components/UI/FormElements/Input";
+import TextArea from "../components/UI/FormElements/TextArea";
 import { firebaseAuth } from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect, useState } from "react";
@@ -30,6 +33,20 @@ const profile = () => {
   });
   const [formData, updateFormData] = useState({ initialFormData });
 
+  const onCloseModal = () => {
+    setEditingProfile(false);
+  };
+  const onOpenModal = () => {
+    setEditingProfile(true);
+  };
+
+  const [editingProfile, setEditingProfile] = useState(false);
+
+  const [editDisplayName, setEditDsiplayName] = useState("");
+  const [editBio, setEditBio] = useState("");
+  const [editSkills, setEditSkills] = useState("");
+
+  
 
 
   useEffect(() => {
@@ -53,10 +70,38 @@ const profile = () => {
     }
   }, [updateFormData, user, loading, error]);
 
+  const handleEditProfile = () => {
+    axios.put("http://127.0.0.1:8000/user/edit/" + user.uid, {
+      displayName: editDisplayName,
+      bio: editBio,
+      skills: editSkills,
+      });  
+    
+    router.reload("/profile");
+  };
+
+
   if (!loading && user != null)
     return (
-      <>
-        <div className="bg-slate-50 h-screen">
+      <div className="bg-slate-50 h-screen">
+      {editingProfile ? (
+        <ConfirmableModal
+          className="w-2/3"
+          onClose={onCloseModal}
+          onConfirm={handleEditProfile}
+          header="Edit Profile"
+        >
+          <form className="flex justify-evenly items-start">
+            <div>
+              <Input type="text" label="Edit Display Name" placeholder="Display name" defaultValue={formData.displayName}  onChange={(event) => setEditDsiplayName(event.target.value)} />
+              <TextArea label="Edit Bio" placeholder="Bio" defaultValue={formData.bio}  onChange={(event) => setEditBio(event.target.value)} ></TextArea>
+            </div>
+            <div>
+              <Input type="text" label="Edit Skills" placeholder="Skills" defaultValue={formData.skills}  onChange={(event) => setEditSkills(event.target.value)} />
+            </div>
+          </form>
+        </ConfirmableModal>
+      ) : null}
           <NavBar />
           <div className="h-full flex flex-col justify-start items-center">
             {/* Profile Card */}
@@ -71,6 +116,17 @@ const profile = () => {
                   <FaPhoneAlt size="35" cursor="pointer" />
                 </div>
               </div>
+              <div>
+            <div
+              onClick={onOpenModal}
+              className="flex justify-between items-center w-40 h-12 bg-sky-500 rounded-lg p-4 hover:bg-sky-300 hover:cursor-pointer"
+            >
+              <FaPencilAlt color="white" size="2rem" />
+              <h2 className="text-white text-base font-semibold">
+                Edit Profile
+              </h2>
+            </div>
+          </div>
               {/* Pinned project */}
               <div className="flex flex-col justify-start items-start">
                 <h1 className="text-3xl font-semibold m-1">Spotlit Project</h1>
@@ -108,7 +164,8 @@ const profile = () => {
             <div className="flex justify-center items-center h-2/5 w-4/5">
               <FlatOutlineCard className="h-full p-2 flex flex-shrink-0 flex-grow basis-1/3 flex-col">
                 <h2 className="text-lg">About me</h2>
-                <p className="text-gray-500"><i>What would you want here? Tell us during Q&A!</i></p>
+                <p className="text-gray-500"><i>{formData.bio}</i></p>
+                <p className="text-gray-500"><i>Skills: {formData.skills}</i></p>
               </FlatOutlineCard>
               <FlatOutlineCard className="h-full p-2 mx-6 flex-shrink-0 flex-grow basis-1/3">
                 <h2 className="text-lg">Pinned Projects</h2>
@@ -135,7 +192,6 @@ const profile = () => {
             </div>
           </div>
         </div>
-      </>
     );
 };
 

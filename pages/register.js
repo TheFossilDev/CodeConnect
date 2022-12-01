@@ -61,14 +61,14 @@ const Register = () => {
               </div>
               <Input
                 type="text"
-                placeHolder="AnyaTaylor"
+                placeholder="AnyaTaylor"
                 label="Username (Public)"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
               />
               <Input
                 type="text"
-                placeHolder="ataylorjoy@gmail.com"
+                placeholder="ataylorjoy@gmail.com"
                 label="Email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
@@ -77,7 +77,7 @@ const Register = () => {
                 <div>
                 <Input
                   type="password"
-                  placeHolder="password"
+                  placeholder="password"
                   label="Password"
                   value={pass}
                   onChange={(event) => setPass(event.target.value)}
@@ -86,7 +86,7 @@ const Register = () => {
                 <div>
                 <Input
                   type="password"
-                  placeHolder="passwords must match"
+                  placeholder="passwords must match"
                   label="Retype"
                 />
                 </div>

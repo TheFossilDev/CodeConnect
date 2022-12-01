@@ -114,14 +114,14 @@ const Projects = () => {
         >
           <form className="flex justify-evenly items-start">
             <div>
-              <Input type="text" label="Project Title" placeHolder="Required" value={title} onChange={(event) => setTitle(event.target.value)} />
+              <Input type="text" label="Project Title" placeholder="Required" value={title} onChange={(event) => setTitle(event.target.value)} />
               <TextArea label="Project Description" value={description} onChange={(event) => setDescription(event.target.value)} ></TextArea>
               <Checkbox label="Is this project beginner friendly?"/>
               <Input type="text" label="Public Repository Link" />
             </div>
             <div>
-              <Input type="text" label="Languages used" placeHolder="Separate with spaces" value={languages} onChange={(event) => setLanguages(event.target.value)} />
-              <Input type="text" label="Project tags" placeHolder="Separate with spaces" />
+              <Input type="text" label="Languages used" placeholder="Separate with spaces" value={languages} onChange={(event) => setLanguages(event.target.value)} />
+              <Input type="text" label="Project tags" placeholder="Separate with spaces" />
               <Checkbox label="Open to mentoring?" />
             </div>
           </form>
