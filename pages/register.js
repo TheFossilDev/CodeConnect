@@ -91,7 +91,7 @@ const Register = () => {
                 />
                 </div>
               </div>
-              {error && <span className="text-l mb-4 text-red-500">Email already in use or password needs to be atleast 6 characters</span>}
+              {error && <span className="text-l mb-4 text-red-500">Either email already in use or password needs to be atleast 6 characters</span>}
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Keep me logged in" />
                 <ButtonPrimary
