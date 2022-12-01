@@ -30,6 +30,7 @@ const Projects = () => {
   const [user, loading, error] = useAuthState(firebaseAuth);
   const [tableData, setTableData] = useState([]);
   const router = useRouter();
+
   useEffect(() => {
     if (!loading && error != null) {
       console.error(error);
@@ -84,35 +85,9 @@ const Projects = () => {
   const [description, setDescription] = useState("");
   const [languages, setLanguages] = useState("");
 
-  const addProject = ( properties ) => {
-    let iconLanguages = []
-    properties.languages.forEach(language => {
-      iconLanguages.push(language === "Python" ? (
-        <FaPython size="25" />
-      ) : language === "JavaScript" ? (
-        <IoLogoJavascript size="25" />
-      ) : language === "Java" ? (
-        <FaJava size="25" />
-      ) : language === "SQL" ? (
-        <GrMysql size="25" />
-      ) : language === "Swift" ? (
-        <FaSwift size="25" />
-      ) : language === "R" ? (
-        <FaRProject size="25" />
-      ) : language
-    )});
-    properties.languages = iconLanguages;
-    
-    projects = [...projects, properties]
-  };
   
   const handleCreateProject = () => {
-    let properties = {
-      status: "inProgress",
-      title: title,
-      description: description,
-      languages: languages.split(" ")
-    }
+    
     axios.post("http://127.0.0.1:8000/project/create/", {
       title: title,
       description: description,
@@ -124,7 +99,8 @@ const Projects = () => {
         console.log(res.data);
       });  
 
-    addProject(properties)
+  
+    router.reload("/projects");
   };
 
   if (!loading && user != null) return (
