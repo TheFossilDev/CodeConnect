@@ -1,22 +1,25 @@
 import Image from "next/image";
 import ClickableText from "../UI/Buttons/ClickableText";
-import { signOut } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 
-import { firebaseAuth } from "../../firebase/clientApp";
+// import { firebaseAuth } from "../../firebase/clientApp";
 import { useRouter } from "next/router";
 
 
 
 const NavBar = props => {
   const router = useRouter();
+  // const handleSignOut = () => {
+  //   signOut(firebaseAuth).then(() => {
+  //     console.log("Signed out");
+  //     router.push("/login")
+  //   }).catch((error) => {
+  //     console.error(error);
+  //   });
+  // };
   const handleSignOut = () => {
-    signOut(firebaseAuth).then(() => {
-      console.log("Signed out");
-      router.push("/login")
-    }).catch((error) => {
-      console.error(error);
-    });
-  };
+    router.push("/login");
+  }
   return (
     <div className="flex justify-center bg-gray-50 border-b-2">
       <div className="flex justify-between w-2/3">

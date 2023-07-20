@@ -17,8 +17,8 @@ import ConfirmableModal from "../components/UI/Modal/ConfirmableModal";
 import Input from "../components/UI/FormElements/Input";
 import TextArea from "../components/UI/FormElements/TextArea";
 import Checkbox from "../components/UI/Checkbox";
-import { firebaseAuth } from "../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
+// import { firebaseAuth } from "../firebase/clientApp";
+// import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
 const projects = [
@@ -46,17 +46,17 @@ const projects = [
 
 
 const Projects = () => {
-  const [user, loading, error] = useAuthState(firebaseAuth);
+  // const [user, loading, error] = useAuthState(firebaseAuth);
   const router = useRouter();
-  useEffect(() => {
-    if (!loading && error != null) {
-      console.error(error);
-    } else if (!loading && user != null) {
-      console.log(user);
-    } else if (!loading) {
-      router.push("/login")
-    }
-  }, [user, loading, error]);
+  // useEffect(() => {
+  //   if (!loading && error != null) {
+  //     console.error(error);
+  //   } else if (!loading && user != null) {
+  //     console.log(user);
+  //   } else if (!loading) {
+  //     router.push("/login")
+  //   }
+  // }, [user, loading, error]);
 
   const onCloseModal = () => {
     setAddingProject(false);
@@ -103,7 +103,7 @@ const Projects = () => {
     addProject(properties)
   };
 
-  if (!loading && user != null) return (
+  return (
     <div className="bg-slate-50 h-screen">
       {addingProject ? (
         <ConfirmableModal

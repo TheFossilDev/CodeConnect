@@ -14,12 +14,15 @@ const Login = () => {
   const router = useRouter();
 
 
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(firebaseAuth);
+  // const [
+  //   signInWithEmailAndPassword,
+  //   user,
+  //   loading,
+  //   error,
+  // ] = useSignInWithEmailAndPassword(firebaseAuth);
+  const user = null;
+  const loading = false;
+  const error = null;
 
   useEffect(() => {
     if (!loading && error != null) {
@@ -44,7 +47,8 @@ const Login = () => {
               <Input type="password" placeHolder="password" label="Password" value={pass} onChange={(event) => setPass(event.target.value)}/>
               <div className="flex justify-between items-center w-full mt-5">
                 <Checkbox label="Remember me" />
-                <ButtonPrimary text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/>
+                {/* <ButtonPrimary text="Login" onClick={() => signInWithEmailAndPassword(email, pass)}/> */}
+                <ButtonPrimary text="Login" onClick={() => router.push("/browse")}/>
               </div>
               <a
                 href="/register"

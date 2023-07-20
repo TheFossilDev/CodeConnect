@@ -3,9 +3,9 @@ import ButtonPrimary from "../components/UI/Buttons/ButtonPrimary";
 import Checkbox from "../components/UI/Checkbox";
 import Input from "../components/UI/FormElements/Input";
 
-import { firebaseAuth } from "../firebase/clientApp";
+// import { firebaseAuth } from "../firebase/clientApp";
 import { useEffect, useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+// import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import ClickableText from "../components/UI/Buttons/ClickableText";
 
@@ -14,16 +14,16 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(firebaseAuth);
+  // const [createUserWithEmailAndPassword, user, loading, error] =
+  //   useCreateUserWithEmailAndPassword(firebaseAuth);
 
-  useEffect(() => {
-    if (!loading && error != null) {
-      console.error(error);
-    } else if (!loading && user != null) {
-      router.push("/profile");
-    }
-  }, [user, loading, error]);
+  // useEffect(() => {
+  //   if (!loading && error != null) {
+  //     console.error(error);
+  //   } else if (!loading && user != null) {
+  //     router.push("/profile");
+  //   }
+  // }, [user, loading, error]);
 
   return (
     <>
@@ -77,7 +77,7 @@ const Register = () => {
                 <Checkbox label="Keep me logged in" />
                 <ButtonPrimary
                   text="Register"
-                  onClick={() => createUserWithEmailAndPassword(email, pass)}
+                  onClick={() => router.push("/profile")}
                 />
               </div>
             </div>
